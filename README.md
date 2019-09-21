@@ -36,13 +36,16 @@ If `make` is not installed yet, then the package can be installed by doing `sudo
 ```
 ./MazeBuilder <number of rows> <number of columns>
 ```
-Both indices start with 0.
+Both indices start with 0 as the initial cell number, and the indices must always be positive in order for the maze to be built.
 
 *Note: the row and column indices do not need to be the same.*
 
 Once this command is entered, the program will display a maze with the user input size. It will then ask the user for the first and second cell to look at, and based on the user's choices, the script will either:
 - break the wall between the two cells and display the updated maze
-- display an error saying that the wall is already broken, display the graph again, and ask for another two cells
+- display an error saying that the `wall is already broken`, display the graph again, and ask for another two cells
+- display an error saying that the `two cells are not adjacent`, display the graph again, and ask for another two cells
+- display an error saying that the `cells are out of bounds`, display the graph again, and ask for another two cells
+- say that the maze is completed
 
 The program will not end until there is a single path that can reach all existing cells in the maze. Or, until the user does a keyboard interrupt.
 
