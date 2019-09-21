@@ -27,7 +27,6 @@ int main(int argc, char* argv[]) {
     // Run maze builder
     Maze* M = Maze_Init(rows, cols);
     do {
-//	printf("print rows & col: %d %d\n", M->rows, M->cols); // added in
         Maze_Print(M);
         printf("\nEnter two neighboring cells to break a wall.\n");
         Cell C1 = getCell(*M, "First"), C2 = getCell(*M, "Second");
@@ -47,7 +46,6 @@ Cell getCell(const Maze M, const char* cellName) {
     printf("%s cell: ", cellName);
     int i = 0, j = 0;
     int scanfResult = scanf("%d %d", &i, &j);
-//	printf("%d %d %d %d", i, j, M.rows, M.cols); // added in
     flushStdin();
     while (scanfResult != 2 || i >= M.rows || j >= M.cols) {
         printf("Cell out of bounds. Try again.\n");
@@ -62,7 +60,6 @@ void printUsage(const char* programName) {
 }
 
 void readRowsAndCols(char* argv[], int* rows, int* cols) {
-    // TODO: complete this function
     *rows = atoi(argv[1]);
     *cols = atoi(argv[2]);
     if ((rows < 0) || (cols < 0)) {

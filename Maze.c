@@ -35,7 +35,6 @@ Cell Cell_Init(unsigned int i, unsigned int j) {
 // Allocates space for walls and initializes them so that
 // each cell is completely surrounded by walls
 void Maze_InitializeWalls(Maze* M) {
-	// TODO: complete this function
 	// malloc array of pointers
 	
 	unsigned int wallRows = 1 + M->rows;
@@ -77,15 +76,12 @@ void Maze_InitializeWalls(Maze* M) {
 // current path between each other. Returns true if it succeeds
 // and false otherwise
 void Maze_BreakWall(Maze* M, Cell C1, Cell C2) {
-	// TODO: complete this function
 	// check if cells are adjacent
 
 	if (((C2.i == C1.i) && (C2.j == (C1.j - 1))) || ((C2.i == (C1.i - 1)) && (C2.j == C1.j)) || ((C2.i == C1.i) && (C2.j == (C1.j + 1))) || ((C2.i == (C1.i + 1)) && (C2.j == C1.j))) {
 		// check if cells are in the same room
 		unsigned int C1CellID = (M->cols) * C1.i + C1.j;
 		unsigned int C2CellID = (M->cols) * C2.i + C2.j;
-		//printf("C1.i is %d and C1.j is %d.\n C1CellID is %d.\n", C1.i, C1.j, C1CellID);
-		//printf("C2.i is %d and C2.j is %d.\n C2CellID is %d.\n", C2.i, C2.j, C2CellID);
 		if (DisjointSet_SameSet(M->cells, C1CellID, C2CellID) == true) {
 			printf("Cells already have a path between them. Try again.\n");
 		}
@@ -124,7 +120,6 @@ void Maze_BreakWall(Maze* M, Cell C1, Cell C2) {
 // Returns true if not complete.
 // Maze is complete if every pair of cells has a path between each other
 bool Maze_IsIncomplete(const Maze* M) {
-	// TODO: complete this function
 	if (DisjointSet_NumberOfSets(M->cells) != 1) {
 		return true;
 	}
@@ -135,7 +130,6 @@ bool Maze_IsIncomplete(const Maze* M) {
 
 // Print maze
 void Maze_Print(const Maze* M) {
-	// TODO: complete this function
 	
 	for (int i = 0; i < (M->rows + 1); ++i) {
 		for (int j = 0; j < (M->cols + 1); ++j) {
@@ -147,7 +141,6 @@ void Maze_Print(const Maze* M) {
 
 // Deallocate memory used for Maze
 void Maze_Destroy(Maze* M) {
-	// TODO: complete this function
 	free(M->walls);
 	DisjointSet_Destroy(M->cells);
 }
